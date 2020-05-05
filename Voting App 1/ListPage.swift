@@ -14,7 +14,8 @@ struct ListPage: View {
     @State var presidentName = String()
     let screenDelegate = SceneDelegate()
     var body: some View {
-    
+    // This is the screen after the user signs in
+        // users can see all the candidates running and click on one of the pages
         NavigationView {
             VStack{
                 Text("2020 Cate Election")
@@ -24,6 +25,8 @@ struct ListPage: View {
                 
                 VStack(alignment: HorizontalAlignment .trailing, content: {
                     HStack{
+                        //drop down menu with more options
+                        // **** gonna add to main screen in order to simplify project.
                         Text("Menu") //align to the trailing side
                             .fontWeight(.heavy)
                         Image(systemName: expand ? "chevron.up": "chevron.down" )
@@ -45,9 +48,7 @@ struct ListPage: View {
                         }.foregroundColor(.black)
                     }
                 })
-                
                     // end of code for the menu
-                    
                     .padding()
                     .animation(.spring())
             
@@ -58,7 +59,7 @@ struct ListPage: View {
                 self.candidateProfiles.presidentName = "Maya fenelon"
                         print (self.candidateProfiles.presidentName)
                         print("This is working up to this point !!!")
-
+// I need to figure out how to store the "candidateProfiles.presidentName" variable so that it is changed on the next page. 
                     }
                     Spacer()
                     Button(action: { //FIx the whole button and navigationView thing

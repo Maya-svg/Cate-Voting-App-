@@ -9,6 +9,7 @@
 import SwiftUI
 import GoogleSignIn
 
+// This the first page the user sees after the app loads
 
 struct FirstView: View{
     // let appManager = AppManager()
@@ -22,12 +23,14 @@ struct FirstView: View{
                 Image("google")
                     .resizable()
                     .frame(maxWidth: 40, maxHeight: 40)
+                //This is where the students signin with their cate usernames
                 TextField("Log-In with Email", text: $studentEmail, onCommit: {
                     if self.studentEmail == "" { //if nothing is typed then user is told to type something
                         self.studentEmail = " (Type Something)"
                     }else {
                         print("good")
-                        // send name to get verified 
+                        // send name to get verified
+                        //i dont think this works 
                     }
                 })
                     .font(.system (size: 30))
