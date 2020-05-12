@@ -21,13 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         
-        let firstView = ListPage()
+        let firstView = EditableCandidatePage(candidateProfiles: AppManager())
         
-         
-        
-        
-        //switch to ContentView() if I want to see that layout
-        // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: firstView)

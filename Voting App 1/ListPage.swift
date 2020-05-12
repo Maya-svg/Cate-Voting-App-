@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ListPage: View {
     @State var expand = false
-    @ObservedObject var candidateProfiles = AppManager()
+    @ObservedObject var candidateProfiles:  AppManager
+    //changed the : to =
     @State var presidentName = String()
     @State private var presentMe = false
     @State private var presentMeToo = false
@@ -75,13 +76,14 @@ struct ListPage: View {
                                 }else {
                                     print("good")
                                     self.candidateProfiles.questions.append(self.askHere)
+                                    self.askHere = ""
                                     
-                                    // why isnt this working????
                                 }
                             })
                             Button(action: {
                                 self.candidateProfiles.questions.append(self.askHere)
                                 print(self.candidateProfiles.questions)
+                                self.askHere = "" 
                             }) {
                                 Image(systemName: "paperplane")
                                     .resizable()
@@ -92,10 +94,9 @@ struct ListPage: View {
                         .border(Color.black, width: 2)
                         .frame(maxWidth: 600, maxHeight: 160)
                         .padding(.horizontal, 10)
-                        // Spacer()
+                        // Spacer()                    
+                }//end of big v-stack
                     
-                }
-                    //end of big v-stack
                     .navigationBarTitle(Text(" Election Candidates"))
                     
                     .navigationBarItems(trailing:
@@ -104,13 +105,10 @@ struct ListPage: View {
                             withAnimation{
                                 self.show.toggle()
                             }
-                            
                         }) {
                             Text("Vote")
                         }
-                        
                 )
-                
             }
             //end of navigation view
             if self.show{
@@ -127,13 +125,12 @@ struct ListPage: View {
                     }
                 )
             }
-            
         }
     }
 }
 
 struct ListPage_Previews: PreviewProvider {
     static var previews: some View {
-        ListPage()
+        ListPage(candidateProfiles: AppManager())
     }
 }

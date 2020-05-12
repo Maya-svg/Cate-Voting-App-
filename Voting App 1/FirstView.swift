@@ -12,10 +12,14 @@ import GoogleSignIn
 // This the first page the user sees after the app loads
 
 struct FirstView: View{
-    @ObservedObject var candidateProfiles: AppManager 
-    @State var studentEmail = "" 
+    @ObservedObject var candidateProfiles = AppManager() 
+    @State var studentEmail = ""
+    @State var name = ""
+    
     var body: some View{
+        NavigationView {
         VStack{
+            
             Text("Cate Sign-In")
                 .font(.system (size: 50))
             HStack{
@@ -28,7 +32,8 @@ struct FirstView: View{
                     if self.studentEmail == "" { //if nothing is typed then user is told to type something
                         self.studentEmail = " (Type Something)"
                     }else {
-                        print("good")
+                        self.candidateProfiles.email = self.studentEmail
+                        print(self.candidateProfiles.email)
                         
                         // send name to get verified
                         //i dont think this works 
@@ -40,14 +45,20 @@ struct FirstView: View{
                     .frame(maxWidth: 350, maxHeight: 150)
                 Spacer()
             }
+         
+            NavigationLink(destination: ListPage(candidateProfiles: AppManager())) { Text("Travel to the Next Page") }
         }
+        //end of VStack
+        }
+        
     }
+    //end of var body
 }
 // after successfully logining in - the use will be take to the list page 
 
 struct FirstView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstView(candidateProfiles: AppManager())
+        FirstView()
     }
 }
 

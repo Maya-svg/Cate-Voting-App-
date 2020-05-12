@@ -8,8 +8,26 @@
 
 import SwiftUI
 
-/*struct EditableCandidatePage: View {
-    
+struct EditableCandidatePage: View {
+    @State var txt = ""
+    @ObservedObject var candidateProfiles: AppManager 
+    var body: some View {
+        ZStack{
+            VStack{
+        MultiLineTF(txt: self.$txt)
+        .border(Color.black, width: 3)
+        .padding()
+       Button(action: {
+        self.candidateProfiles.bio[0] = self.txt
+        print("Added text is stored")
+       }) {
+                    Text("Publish")
+                }
+    }
+    }
+    }
+}
+ /*
     @ObservedObject var candidateProfiles = AppManager()
     let topics = ["Bio", "Goals", "Promises"]
     @State private var mainTopic = "Bio"
@@ -70,6 +88,7 @@ import SwiftUI
         }
     }
 }
+*/
 
 struct MultiLineTF : UIViewRepresentable {
 //add varbody some: view{}
@@ -117,6 +136,6 @@ textView.textColor = .label
 
 struct EditableCandidatePage_Previews: PreviewProvider {
     static var previews: some View {
-        CandidatePage(candidateProfiles: AppManager()) 
+        EditableCandidatePage(candidateProfiles: AppManager())
     }
-}*/
+}

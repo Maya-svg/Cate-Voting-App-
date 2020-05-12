@@ -9,19 +9,50 @@ import SwiftUI
 struct CandidatePage: View {
     @ObservedObject var candidateProfiles: AppManager
     let topics = ["Bio", "Goals", "Promises"]
-    var email = ""
+    @State var studentEmail = "Maya"
+    @State var data = ""
     var body: some View {
         ScrollView{
             ZStack{
                 VStack{
                     VStack//(alignment: HorizontalAlignment.leading)
                         { //align it to the "trailing" side
+                            
                             Button(action: {
-                                print("I matched")
-                                //ERROR HERE
-                                /*if self.email == self.candidateProfiles.specialAcess{
+                                print("Edit Button worked when tapped")
+                                
+                                //ERROR HERE- trying to search through the array
+                                /*  for x in self.candidateProfiles.specialAcess[0...7] {
+                                 if self.candidateProfiles.email ==  self.studentEmail
+                                 {
                                  print("I matched")
-                                 }*/
+                                 }
+                                 }
+                                 */
+                                if self.candidateProfiles.presidentName == "Lilly Zanze"{
+                                    self.candidateProfiles.bio[0] = ""
+                                    self.candidateProfiles.goals[0] = ""
+                                    self.candidateProfiles.promises[0] = ""
+                                    print("my president is \(self.candidateProfiles.presidentName)")
+                                    
+                                    //HOW DO I GET A TEXTFIELD IN EACH BOX?? MAKE IT APPEAR?
+                                    TextField("Placeholder", text: self.$data)
+                                    
+                                    
+                                }else if self.candidateProfiles.presidentName == "Rachel Wilkes"{
+                                    self.candidateProfiles.bio[1] = ""
+                                    self.candidateProfiles.goals[1] = ""
+                                    self.candidateProfiles.promises[1] = ""
+                                    print("my president is \(self.candidateProfiles.presidentName)")
+                                    // how do i change the data in the box ?? 
+                                }else{
+                                    self.candidateProfiles.bio[2] = ""
+                                    self.candidateProfiles.goals[2] = ""
+                                    self.candidateProfiles.promises[2] = ""
+                                    print("my president is \(self.candidateProfiles.presidentName)")
+                                    
+                                }
+                                
                             }) {
                                 ZStack{
                                     Rectangle()
@@ -31,12 +62,10 @@ struct CandidatePage: View {
                                     Image(systemName: "pencil")
                                         .resizable()
                                         .frame(width: 30.0, height: 30.0)
-                                    
                                 }
-                                
                             }
-                            
                     }
+                    
                     HStack{
                         ForEach(0..<2) {_ in
                             VStack{
