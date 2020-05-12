@@ -17,6 +17,7 @@
 		8770B9B324609EBC00205FF0 /* EditableCandidatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8770B9B224609EBC00205FF0 /* EditableCandidatePage.swift */; };
 		87D95DC42457654500269B73 /* CandidatePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D95DC32457654500269B73 /* CandidatePage.swift */; };
 		87D95DC6245765B600269B73 /* ListPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D95DC5245765B600269B73 /* ListPage.swift */; };
+		87F29A96246A1BD900A284E0 /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F29A95246A1BD900A284E0 /* Vote.swift */; };
 		87F9CDC3244E2AE800FAAF7D /* GoogleService-Info (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = 87F9CDC2244E2AE800FAAF7D /* GoogleService-Info (1).plist */; };
 		87F9CDC5244E57B900FAAF7D /* AppManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F9CDC4244E57B900FAAF7D /* AppManager.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +36,7 @@
 		8770B9B224609EBC00205FF0 /* EditableCandidatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditableCandidatePage.swift; sourceTree = "<group>"; };
 		87D95DC32457654500269B73 /* CandidatePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandidatePage.swift; sourceTree = "<group>"; };
 		87D95DC5245765B600269B73 /* ListPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPage.swift; sourceTree = "<group>"; };
+		87F29A95246A1BD900A284E0 /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		87F9CDC2244E2AE800FAAF7D /* GoogleService-Info (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info (1).plist"; sourceTree = "<group>"; };
 		87F9CDC4244E57B900FAAF7D /* AppManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManager.swift; sourceTree = "<group>"; };
 		C40E5D6F5AC58901CB92D60F /* Pods_Voting_App_1.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voting_App_1.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +94,7 @@
 				874672E52445648E004635B7 /* Preview Content */,
 				874672E124456483004635B7 /* FirstView.swift */,
 				87D95DC5245765B600269B73 /* ListPage.swift */,
+				87F29A95246A1BD900A284E0 /* Vote.swift */,
 				87D95DC32457654500269B73 /* CandidatePage.swift */,
 				8770B9B224609EBC00205FF0 /* EditableCandidatePage.swift */,
 			);
@@ -251,6 +254,7 @@
 				8770B9B324609EBC00205FF0 /* EditableCandidatePage.swift in Sources */,
 				87D95DC6245765B600269B73 /* ListPage.swift in Sources */,
 				874672DE24456483004635B7 /* AppDelegate.swift in Sources */,
+				87F29A96246A1BD900A284E0 /* Vote.swift in Sources */,
 				874672E024456483004635B7 /* SceneDelegate.swift in Sources */,
 				87D95DC42457654500269B73 /* CandidatePage.swift in Sources */,
 				874672E224456483004635B7 /* FirstView.swift in Sources */,

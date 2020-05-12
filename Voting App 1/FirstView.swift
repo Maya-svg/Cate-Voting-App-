@@ -12,7 +12,7 @@ import GoogleSignIn
 // This the first page the user sees after the app loads
 
 struct FirstView: View{
-    // let appManager = AppManager()
+    @ObservedObject var candidateProfiles: AppManager 
     @State var studentEmail = "" 
     var body: some View{
         VStack{
@@ -29,6 +29,7 @@ struct FirstView: View{
                         self.studentEmail = " (Type Something)"
                     }else {
                         print("good")
+                        
                         // send name to get verified
                         //i dont think this works 
                     }
@@ -46,7 +47,7 @@ struct FirstView: View{
 
 struct FirstView_Previews: PreviewProvider {
     static var previews: some View {
-        FirstView()
+        FirstView(candidateProfiles: AppManager())
     }
 }
 

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct EditableCandidatePage: View {
+/*struct EditableCandidatePage: View {
     
     @ObservedObject var candidateProfiles = AppManager()
     let topics = ["Bio", "Goals", "Promises"]
@@ -72,7 +72,7 @@ struct EditableCandidatePage: View {
 }
 
 struct MultiLineTF : UIViewRepresentable {
-
+//add varbody some: view{}
 @Binding var txt : String
 
 func makeCoordinator() -> MultiLineTF.Coordinator {
@@ -93,7 +93,9 @@ return tview
 }
 
 func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<MultiLineTF>) {
-
+//missing code in here
+    //thisis the function i would be looking
+    
 }
 class Coordinator : NSObject, UITextViewDelegate{
 
@@ -115,6 +117,6 @@ textView.textColor = .label
 
 struct EditableCandidatePage_Previews: PreviewProvider {
     static var previews: some View {
-        CandidatePage()
+        CandidatePage(candidateProfiles: AppManager()) 
     }
-}
+}*/

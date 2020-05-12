@@ -12,101 +12,123 @@ struct ListPage: View {
     @State var expand = false
     @ObservedObject var candidateProfiles = AppManager()
     @State var presidentName = String()
-    let screenDelegate = SceneDelegate()
+    @State private var presentMe = false
+    @State private var presentMeToo = false
+    @State var askHere = ""
+    @State var show = false
+    
     var body: some View {
-    // This is the screen after the user signs in
-        // users can see all the candidates running and click on one of the pages
-        NavigationView {
-            VStack{
-                Text("2020 Cate Election")
-                    .font(.system (size: 40))
-                    .padding()
-                Spacer()
-                
-                VStack(alignment: HorizontalAlignment .trailing, content: {
-                    HStack{
-                        //drop down menu with more options
-                        // **** gonna add to main screen in order to simplify project.
-                        Text("Menu") //align to the trailing side
-                            .fontWeight(.heavy)
-                        Image(systemName: expand ? "chevron.up": "chevron.down" )
-                            .resizable()
-                            .frame(width: 13, height: 6)
-                    }.onTapGesture{
-                        self.expand.toggle()
-                    }
-                    if expand {
+        ZStack{
+            Spacer() 
+            NavigationView {
+                VStack{
+                        NavigationLink(destination: CandidatePage(candidateProfiles: candidateProfiles), isActive: $presentMeToo) { EmptyView() }
                         Button(action: {
-                            print("I work here")
-                        }) {
-                            Text("Submit a debate Question")
-                        }.foregroundColor(.black)
-                        Button(action: {
-                            print("This works")
-                        }) {
-                            Text(" Vote ")
-                        }.foregroundColor(.black)
-                    }
-                })
-                    // end of code for the menu
-                    .padding()
-                    .animation(.spring())
-            
-                VStack {
-                    NavigationLink(destination: CandidatePage()) {
-                        Text("Newbie")
-                    }.onAppear() {
-                self.candidateProfiles.presidentName = "Maya fenelon"
-                        print (self.candidateProfiles.presidentName)
-                        print("This is working up to this point !!!")
-// I need to figure out how to store the "candidateProfiles.presidentName" variable so that it is changed on the next page. 
-                    }
-                    Spacer()
-                    Button(action: { //FIx the whole button and navigationView thing
-                        print("here?")
-                        self.candidateProfiles.presidentName = "Lilly Zanze"
-                        self.candidateProfiles.vicePresidentName = "Joshua Gabbay"
-                        print(self.candidateProfiles.presidentName)
-                        print(self.candidateProfiles.vicePresidentName)
-                    }){
-                        NavigationLink(destination: CandidatePage()){
-                            Text("Zanze Gabbay link")
-                        }
-                        Text("Zanze nbjbhb Gabbay")
+                            self.presentMeToo = true
+                            self.candidateProfiles.presidentName = "Lilly Zanze"
+                            self.candidateProfiles.vicePresidentName = "Joshua Gabbay"
+                            print("I showed Lilly & Josh")
+                            // your page's context details are set here
+                            self.candidateProfiles.details[0] = self.candidateProfiles.bio[0]
+                            self.candidateProfiles.details[1] = self.candidateProfiles.goals[0]
+                            self.candidateProfiles.details[2] = self.candidateProfiles.promises[0]
+                        }, label: {
+                            Text("Zanze Gabbay")
+                        })
                         
-                    }
-                    Spacer()
-                    
-                    Button(action: {
-                        self.candidateProfiles.presidentName = "Rachel Wilkes"
-                        self.candidateProfiles.vicePresidentName = "Esteban Paulino"
-                        print(self.candidateProfiles.presidentName)
-                        print(self.candidateProfiles.vicePresidentName)
-                    }) {
-                        NavigationLink(destination: CandidatePage()) {
+                        Spacer()
+                        
+                        NavigationLink(destination: CandidatePage(candidateProfiles: candidateProfiles)){
                             Text("Wilkes Paulino")
+                        }.onAppear(){
+                            
+                            self.candidateProfiles.presidentName = "Rachel Wilkes"
+                            self.candidateProfiles.vicePresidentName = "Esteban Paulino"
+                            self.candidateProfiles.details[0] = self.candidateProfiles.bio[1]
+                            self.candidateProfiles.details[1] = self.candidateProfiles.goals[1]
+                            self.candidateProfiles.details[2] = self.candidateProfiles.promises[1]
+                            print("I showed Rachel W. & Esteban")
                         }
+                        Spacer()
                         
-                    }
-                    Spacer()
-                    Button(action: {
-                        self.candidateProfiles.presidentName = "Peter Coors"
-                        self.candidateProfiles.vicePresidentName = "Asa Sam"
-                        print(self.candidateProfiles.presidentName)
-                        print("I kinda work")
-                        print(self.candidateProfiles.vicePresidentName)
-                    }) {
-                        NavigationLink(destination: CandidatePage()) {
+                        NavigationLink(destination: CandidatePage(candidateProfiles: candidateProfiles), isActive: $presentMe) { EmptyView() }
+                        Button(action: {
+                            self.presentMe = true
+                            
+                            self.candidateProfiles.presidentName = "Peter Coors"
+                            self.candidateProfiles.vicePresidentName = "Asa Sam"
+                            // coul i just create an array of the canddates and have ut increase --- kinda like below
+                            self.candidateProfiles.details[0] = self.candidateProfiles.bio[2]
+                            self.candidateProfiles.details[1] = self.candidateProfiles.goals[2]
+                            self.candidateProfiles.details[2] = self.candidateProfiles.promises[2]
+                            print("I showed Asa Sam & Coors")
+                        }, label: {
                             Text("Coors Sam")
+                        })
+                        //Spacer()
+                        
+                        HStack{
+                            //add one question box here and one on each page
+                            TextField("   Submit A Debate Question", text: $askHere, onCommit: {
+                                if self.askHere == "" {
+                                    self.askHere = " No Question Submitted "
+                                }else {
+                                    print("good")
+                                    self.candidateProfiles.questions.append(self.askHere)
+                                    
+                                    // why isnt this working????
+                                }
+                            })
+                            Button(action: {
+                                self.candidateProfiles.questions.append(self.askHere)
+                                print(self.candidateProfiles.questions)
+                            }) {
+                                Image(systemName: "paperplane")
+                                    .resizable()
+                                    .frame(maxWidth: 40, maxHeight: 40)
+                                    .padding(8)
+                            }
+                        }
+                        .border(Color.black, width: 2)
+                        .frame(maxWidth: 600, maxHeight: 160)
+                        .padding(.horizontal, 10)
+                        // Spacer()
+                    
+                }
+                    //end of big v-stack
+                    .navigationBarTitle(Text(" Election Candidates"))
+                    
+                    .navigationBarItems(trailing:
+                        Button(action: {
+                            print("I'm on my way to voted")
+                            withAnimation{
+                                self.show.toggle()
+                            }
+                            
+                        }) {
+                            Text("Vote")
                         }
                         
-                    }
-                    Spacer()
-                }
+                )
+                
             }
-            //end of big v-stack
-        }
             //end of navigation view
+            if self.show{
+                GeometryReader{_ in
+                    Vote()
+                    
+                }.background(
+                    Color.black.opacity(0.65)
+                        .edgesIgnoringSafeArea(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+                        .onTapGesture {
+                            withAnimation{
+                                self.show.toggle()
+                            }
+                    }
+                )
+            }
+            
+        }
     }
 }
 
