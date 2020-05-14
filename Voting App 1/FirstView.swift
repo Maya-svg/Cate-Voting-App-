@@ -18,41 +18,39 @@ struct FirstView: View{
     
     var body: some View{
         NavigationView {
-        VStack{
-            
-            Text("Cate Sign-In")
-                .font(.system (size: 50))
-            HStack{
-                Spacer()
-                Image("google")
-                    .resizable()
-                    .frame(maxWidth: 40, maxHeight: 40)
-                //This is where the students signin with their cate usernames
-                TextField("Log-In with Email", text: $studentEmail, onCommit: {
-                    if self.studentEmail == "" { //if nothing is typed then user is told to type something
-                        self.studentEmail = " (Type Something)"
-                    }else {
-                        self.candidateProfiles.email = self.studentEmail
-                        print(self.candidateProfiles.email)
-                        
-                        // send name to get verified
-                        //i dont think this works 
-                    }
-                })
-                    .font(.system (size: 30))
-                    .border(Color.black, width: 2)
-                    .aspectRatio(30, contentMode: .fit)
-                    .frame(maxWidth: 350, maxHeight: 150)
-                Spacer()
+            VStack{
+                
+                Text("Cate Sign-In")
+                    .font(.system (size: 50))
+                HStack{
+                    Spacer()
+                    Image("google")
+                        .resizable()
+                        .frame(maxWidth: 40, maxHeight: 40)
+                    
+                    //This is where the students signin with their cate usernames
+                    TextField("Log-In with Email", text: $studentEmail, onCommit: {
+                        if self.studentEmail == "" {
+                            self.studentEmail = " (Type Something)"
+                        }else {
+                            self.candidateProfiles.email = self.studentEmail
+                            print(self.candidateProfiles.email)
+                            
+                            // send name to get verified
+                            //i dont think this works
+                        }
+                    })
+                        .font(.system (size: 30))
+                        .border(Color.black, width: 2)
+                        .aspectRatio(30, contentMode: .fit)
+                        .frame(maxWidth: 350, maxHeight: 150)
+                    Spacer()
+                }
+                
+                NavigationLink(destination: ListPage(candidateProfiles: AppManager())) { Text("Travel to the Next Page") } //end of navigation link
             }
-         
-            NavigationLink(destination: ListPage(candidateProfiles: AppManager())) { Text("Travel to the Next Page") }
-        }
-        //end of VStack
-        }
-        
+        } // end of navigationView
     }
-    //end of var body
 }
 // after successfully logining in - the use will be take to the list page 
 

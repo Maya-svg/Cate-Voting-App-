@@ -95,8 +95,8 @@
 				874672E124456483004635B7 /* FirstView.swift */,
 				87D95DC5245765B600269B73 /* ListPage.swift */,
 				87F29A95246A1BD900A284E0 /* Vote.swift */,
-				87D95DC32457654500269B73 /* CandidatePage.swift */,
 				8770B9B224609EBC00205FF0 /* EditableCandidatePage.swift */,
+				87D95DC32457654500269B73 /* CandidatePage.swift */,
 			);
 			path = "Voting App 1";
 			sourceTree = "<group>";
