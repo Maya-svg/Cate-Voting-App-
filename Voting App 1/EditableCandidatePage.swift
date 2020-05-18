@@ -24,7 +24,7 @@ struct EditableCandidatePage: View {
                     .border(Color.black, width: 3)
                     .padding()
                 
-                VStack(alignment: .leading){
+                VStack(alignment: .leading){ //improve to only be able to select one button at a time
                 Button(action: {
                     self.didTap = true
                     self.candidateProfiles.details[0] = self.txt

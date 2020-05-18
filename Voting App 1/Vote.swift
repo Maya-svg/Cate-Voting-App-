@@ -43,7 +43,7 @@ struct Vote: View {
                 }
                 print("I voted")
                 // self.submitedVotes.append(<#Any#>)
-                // i want to ad the raking in here 
+                // collect the votes by turning them into json format
             }) {
                 Text("Submit My Vote")
             }

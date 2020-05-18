@@ -23,10 +23,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let firstView = ListPage(candidateProfiles: AppManager()) 
         
-        
-        //EditableCandidatePage(candidateProfiles: AppManager())
-        //ListPage(candidateProfiles: AppManager()) 
-        
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: firstView)

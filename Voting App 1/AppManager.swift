@@ -22,16 +22,14 @@ class AppManager: ObservableObject {
     @Published var questions = [ ]
     // store questions on the server
     
-    // @Published var submitedVotes = [ ]
     @Published var email = ""
     
-    @Published var specialAcess = [ "Maya"
-        /*
-         "Lilly_Zanze@cate.org",
+    @Published var specialAcess = [
+        "Lilly_Zanze@cate.org",
          "Joshua_Gabbay@cate.org",
          "Rachel_Wilkes@cate.org",
          "Estaban_Paulino@cate.org",
          "Peter_Coors@cate.org",
-         "Asa_Sam@cate.org" */
-    ]
+         "Asa_Sam@cate.org"
+    ] //should i move this to the server?? -- or it could be added to the google sign in code 
 }

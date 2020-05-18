@@ -8,13 +8,9 @@ import SwiftUI
 
 struct CandidatePage: View {
     @ObservedObject var candidateProfiles: AppManager
-    let topics = ["Bio", "Goals", "Promises"]
-    @State var studentEmail = "Maya"
-    //@State var data = ""
-    //@State var editingpage = false
+    let topics = ["Bio", "Goals", "Promises"] 
     @State private var showingSheet = false
-    @State var editMode = false
-    //@Environment(\.editMode) var edit
+    
     var body: some View {
         ScrollView{
             ZStack{
@@ -47,7 +43,7 @@ struct CandidatePage: View {
                         print(self.candidateProfiles.presidentName)
                         var vicePresidentName = self.candidateProfiles.vicePresidentName
                         print(self.candidateProfiles.vicePresidentName)
-                        print("I appeared & working")
+                       
                     }.padding()
                     Spacer()
                     
@@ -68,7 +64,6 @@ struct CandidatePage: View {
                         
                         Button(action: {
                             print("Edit Button worked when tapped")
-                            self.editMode = true 
                             
                             self.showingSheet.toggle()
                             print("self.candidateProfiles.details[0] is \(self.candidateProfiles.details[0])")
